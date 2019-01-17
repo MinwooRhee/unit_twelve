@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from settings import *
 
 
@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         # finish setting the class variables to the parameters
         self.color = RED
         self.x_speed = 0
-        self.y_speed = 5
+        self.y_speed = 0
 
         # Create a surface, get the rect coordinates, fill the surface with a white color (or whatever color the
         # background of your breakout game will be.
@@ -28,7 +28,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.y_speed
 
         if self.rect.bottom > APPLICATION_HEIGHT - RADIUS_OF_BALL:
-            self.y_speed = -10
+            self.y_speed = - 10
 
         if self.rect.y < APPLICATION_HEIGHT - RADIUS_OF_BALL:
             self.y_speed += 0.3

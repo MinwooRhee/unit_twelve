@@ -2,6 +2,7 @@ import pygame, sys, player
 from pygame.locals import *
 from settings import *
 
+
 def main():
 
     pygame.init()
@@ -15,19 +16,32 @@ def main():
 
     while True:
             for event in pygame.event.get():
+
                 if event == QUIT:
                     pygame.quit()
                     sys.exit()
 
+                position = pygame.mouse.get_pos()
+
+                if abs(my_ball.rect.x + RADIUS_OF_BALL - position[0]) < 25:
+                    my_ball.x_speed = 0
+                elif my_ball.rect.x + RADIUS_OF_BALL > position[0]:
+                    my_ball.x_speed = - 3
+                elif my_ball.rect.x + RADIUS_OF_BALL < position[0]:
+                    my_ball.x_speed = 3
+
+
+
             main_surface.fill(WHITE)
 
-            position = pygame.mouse.get_pos()
 
             my_ball.move()
-            my_ball.rect.x = position[0] - RADIUS_OF_BALL
             main_surface.blit(my_ball.image, my_ball.rect)
 
             pygame.display.update()
 
+
+clock = pygame.time.Clock()
+clock.tick(300)
 
 main()
