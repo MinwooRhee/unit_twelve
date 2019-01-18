@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
         # Add a circle to represent the ball to the surface just created.
-        pygame.draw.circle(self.image, (255, 0, 0), (radius, radius), radius, 0)
+        pygame.draw.circle(self.image, RED, (radius, radius), radius, 0)
 
     def move(self):
 
@@ -28,7 +28,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.y_speed
 
         if self.rect.bottom > APPLICATION_HEIGHT - RADIUS_OF_BALL:
-            self.y_speed = - 10
+            self.y_speed = 0
 
         if self.rect.y < APPLICATION_HEIGHT - RADIUS_OF_BALL:
             self.y_speed += 0.3
