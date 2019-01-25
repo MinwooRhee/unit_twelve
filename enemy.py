@@ -5,21 +5,29 @@ from settings import *
 class Enemy(pygame.sprite.Sprite):
 
     def __init__(self):
-        # initialize sprite super class
+        """
+        load the image for the coin.
+        gives the coin a random velocity.
+        :return: None
+        """
+        # initialize sprite super class.
         super().__init__()
 
-        # finish setting the class variables to the parameters
-
+        # the enemy moves at a random velocity.
         self.x_speed = random.randint(- 5, 5)
         self.y_speed = random.randint(- 5, 5)
 
-        # Create a surface with the correct height and width
+        # load the image file of an enemy.
         self.image = pygame.image.load("dragon.png")
 
-        # Get the rect coordinates
+        # Get the rect coordinates.
         self.rect = self.image.get_rect()
 
     def move(self):
+        """
+        the enemy moves and bounces off the screen.
+        :return: None
+        """
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
 
